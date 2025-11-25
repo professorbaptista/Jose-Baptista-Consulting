@@ -1,9 +1,17 @@
 
-
-<header class="header brand">
-   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <header class="header brand">
    <div class="logo">
-      <a href="/"><img src="/images/logotipo.webp" alt="Logotipo" class="logotipo"></a>
+      <a href="/"><img src="/images/logotipo (1).webp" alt="Logotipo" class="logotipo"></a>
+      
+      <a class="consulting-logo" href="/">José Baptista <br> Consulting</a>
     </div>
     <nav>
        <a href="/">Home</a>
@@ -17,10 +25,14 @@
 {{!-- Dropdown menu --}}
 <div class="dropdown">
   
-   <img class="dropbtn" src="/images/menu_24.png">
+   <img id="open-menu-btn" class="dropbtn" src="/images/menu_24.png">
    
-   <div class="dropdown-content">
-      <a href="/">Home</a>
+   
+   <div id="hidden-menu" class="dropdown-content">
+
+      <img id="close-menu-btn" class="close-icon" src="/images/close_24 (2).png">
+
+      <a id="home" href="/">Home</a>
       <a href="/about">Sobre Mim</a>
       <a href="/servicos">Serviços</a>
       <a href="/depoimentos">Depoimentos</a>
@@ -29,4 +41,39 @@
   </div>
 </div>
 </header>
+<script>
+   // Função para manipular os menus de abrir e fechar
 
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Seleciona os elementos
+    const openBtn = document.getElementById('open-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const menu = document.getElementById('hidden-menu');
+    
+
+    // 2. Função para abrir o menu
+    function openMenu() {
+        menu.classList.add('is-open');
+    }
+
+    // 3. Função para fechar o menu
+    function closeMenu() {
+        menu.classList.remove('is-open');
+    }
+
+    // 4. Atribui os ouvintes de eventos
+    openBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Opcional: Fechar o menu ao clicar fora dele
+    document.addEventListener('click', function(event) {
+        // Verifica se o clique não foi no menu nem no botão de abrir
+        if (!menu.contains(event.target) && !openBtn.contains(event.target)) {
+            closeMenu();
+        }
+    });
+});
+
+</script>
+</body>
+</html>

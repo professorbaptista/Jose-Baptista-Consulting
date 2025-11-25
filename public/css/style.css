@@ -24,12 +24,46 @@ html, body{
     var(--cor-fundo-claro),
     #E8F0FF
   );
+  :root {
+  /*
+  =========================
+  CORES OFICIAIS DO LOGOTIPO
+  =========================
+  */
+
+  /* AZUL Principal (Dossiês, Cor da Marca) */
+  --cor-marca-azul: #3D8AC4;
+
+  /* VERMELHO Destaque (Fita, Chamadas de Atenção) */
+  --cor-destaque-vermelho: #E03C3C;
+
+  /* CINZA/FUNDO Claro (Fundo, Sombras, Detalhes Suaves) */
+  --cor-fundo-base: #F5F5F5;
+
+  /* BRANCO (Texto Principal, Chave) */
+  --cor-texto-claro: #FFFFFF;
+
+
+  /*
+  =========================
+  GRADIENTE (Com as novas cores da marca)
+  =========================
+  */
+
+  --gradiente-fundo-suave: linear-gradient(
+    to top,
+    var(--cor-fundo-base),       /* Começa no Cinza Claro */
+    var(--cor-marca-azul) 75%    /* Termina no Azul da Marca (em 75% da área) */
+  );
+}
 }
 
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--gradiente-fundo-suave);
+    /* font-family: ; */
 }
 
 
@@ -48,12 +82,27 @@ header {
     backdrop-filter: blur(6px);
 }
 
+header .logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 /* Logo / brand */
 header .logotipo {
    width: 130px;
    height: 70px;
    margin-top: 3px; 
-   /* border-radius: 50%; */
+}
+
+/* Jose Baptista Consulting oculto */
+.consulting-logo{
+  /* display: none; */
+  text-decoration: none;
+  color: var(--cor-branco);
+  font-size: 1.8rem;
+  text-align: center;
 }
 
 /* Navigation */
@@ -70,7 +119,7 @@ header nav a {
     padding: 0.5rem 0.65rem;
     border-radius: 6px;
     transition: background-color 150ms ease, color 150ms ease, transform 120ms ease;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
 }
 
 header nav a:hover,
@@ -106,7 +155,7 @@ header .btn {
 .dropdown{
   display:none;
 }
-.more_vert{
+.more_vert, .dropbtn_{
   height: 44px;
   position: absolute;
   top: 0;
