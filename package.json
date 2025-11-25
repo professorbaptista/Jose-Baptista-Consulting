@@ -1,0 +1,23 @@
+{
+  "name": "prestacao_servicos",
+  "version": "1.0.0",
+  "description": "Projecto de actividade de prestação de serviços",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "prestação",
+    "serviços",
+    "digitais"
+  ],
+  "author": "Jose Baptista",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.1",
+    "nodemon": "^3.1.11"
+  }
+}

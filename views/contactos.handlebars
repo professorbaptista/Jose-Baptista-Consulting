@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos — José Baptista Consulting</title>
+<meta name="description" content="Entre em contacto para marcação de consultoria, orientação profissional ou parcerias.">
+
+<meta property="og:title" content="Fale Connosco">
+<meta property="og:description" content="Entre em contacto para consultoria profissional.">
+<meta property="og:url" content="https://josebaptistaconsulting.pt/contactos">
+<meta property="og:image" content="https://josebaptistaconsulting.pt/assets/og-contactos.jpg">
+
+</head>
+<body>
+  <main class="contactos-page">
+
+    <!-- HERO -->
+    <section class="contactos-hero">
+        <h1>Contacte-nos</h1>
+        <p>Fale connosco para apoio administrativo, desenvolvimento web ou consultoria profissional.</p>
+    </section>
+
+    <!-- INFO DE CONTACTO -->
+    <section class="contact-info">
+        <div class="contact-card">
+            <h3>Email</h3>
+            <p>📩 <a href="mailto:josebaptista.consulting@gmail.com">josejbbaptista@gmail.com</a></p>
+        </div>
+
+        <div class="contact-card">
+            <h3>WhatsApp</h3>
+            <p>📱 <a href="https://wa.me/351964318677" target="_blank">Enviar mensagem</a></p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Localização</h3>
+            <p>📍 Portugal (Consultoria 100% Online)</p>
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="contact-form-section">
+        <h2>Envie a sua mensagem</h2>
+
+        <form class="contact-form" action="/enviar-mensagem" method="POST">
+
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" required placeholder="O seu nome">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="O seu email">
+            </div>
+
+            <div class="form-group">
+                <label for="assunto">Assunto</label>
+                <input type="text" id="assunto" name="assunto" required placeholder="Motivo do contacto">
+            </div>
+
+            <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Escreva a sua mensagem..." rows="6" required></textarea>
+            </div>
+
+            <button type="submit" class="btn enviar-btn">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <!-- MAPA OPCIONAL -->
+    <section class="mapa-section">
+        <h2>Atendemos todo o país</h2>
+        <img src="/images/mapa-portugal.jpg" alt="Mapa de Portugal" class="mapa-img">
+    </section>
+
+</main>
+
+</body>
+</html>
+
+

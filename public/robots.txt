@@ -1,0 +1,16 @@
+
+User-agent: *
+Allow: /
+
+# Bloqueia pastas técnicas — ajuste se necessário
+User-agent: *
+Allow: /
+
+Sitemap: https://josebaptistaconsulting.pt/sitemap.xml
+
+# Bloquear ficheiros sensíveis
+Disallow: /admin/
+Disallow: /config/
+Disallow: /private/
+
+

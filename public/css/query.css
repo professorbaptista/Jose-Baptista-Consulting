@@ -1,0 +1,271 @@
+
+/* ============================
+   📱 MOBILE MODE (até 768px)
+=============================== */
+@media (max-width: 768px) {
+
+    /* -------- HEADER -------- */
+    header {
+        height: 70px;
+        padding: 0 1rem;
+    }
+
+        header .logo{
+            margin-left: 5%;
+            margin-top: 2px;
+        }
+        header .logotipo {
+        width: 140px;
+        height: 65px;
+    }
+
+    header nav {
+        display: none;
+        flex-direction: column;
+        background: var(--cor-primaria);
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        z-index: 999;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 2rem;
+        color: #fff;
+    }
+
+    header.nav-open nav {
+        display: flex;
+    }
+
+    /* More vert hidden */
+
+.dropbtn {
+  margin-right: 15%;
+  width: 94px;
+  height: 94px;
+  padding: 16px;
+  font-size: 16px;
+
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 10%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 135px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+/* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+
+
+
+
+
+    .container-principal {
+        padding-top: 90px;
+    }
+
+    /* -------- HOME -------- */
+    .first-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .lado-esquerdo,
+    .lado-direito {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .main-title {
+        font-size: 2.2rem;
+    }
+
+    .second-title {
+        font-size: 1.2rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Cards serviços (home) */
+    .second-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .cta-final h2 {
+        font-size: 1.5rem;
+    }
+
+    /* -------- ABOUT -------- */
+    section.about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .page-title h1{
+        font-size: 2.5rem;
+    }
+
+    .hero .lead{
+        font-size: 1rem;
+        text-align: justify;
+    }
+
+    section.about img {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+
+    .text p{
+        font-size: 1rem;
+        text-align: justify; 
+    }
+
+    .especiali ul{
+        list-style: none;
+
+    }
+
+    .especiali ul li{
+        font-size: 1rem;
+        text-align: justify;
+    }
+
+    .services-section .card{
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 11px 10px;
+    }
+
+    .card ul{
+        list-style: none;
+    }
+
+    .card ul li{
+        font-size: 1.2rem;
+    }
+
+    /* -------- SERVIÇOS -------- */
+    .servicos-hero h1 {
+        font-size: 2rem;
+    }
+
+    .servicos-hero p{
+        text-align: center;
+        line-height: 2.2rem;
+    }
+
+    .servicos-bloco {
+        padding: 2rem 1rem;
+    }
+
+    /* Grid dos cards */
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* -------- CONTACTOS -------- */
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-card {
+        width: 90%;
+    }
+
+    input, textarea {
+        font-size: 1rem;
+    }
+
+    /* -------- DEPOIMENTOS -------- */
+    .testimonial-list {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+        padding: 1.2rem;
+    }
+
+    .section-header h1{
+        font-size: 2rem;
+    }
+
+    .section-header p{
+        font-size: 1.3rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    /* -------- FOOTER -------- */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-section {
+        width: 100%;
+    }
+
+    .footer-bottom {
+        font-size: 0.85rem;
+    }
+}
+
+
+/* ============================
+   📱 EXTRA SMALL (até 480px)
+=============================== */
+@media (max-width: 480px) {
+
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .second-section {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        width: 100%;
+    }
+
+    section.about img {
+        max-width: 180px;
+    }
+
+    .servicos-hero h1 {
+        font-size: 1.7rem;
+    }
+}
