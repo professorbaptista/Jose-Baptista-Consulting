@@ -308,6 +308,7 @@ main.home-container {
     color: #222;
 }
 
+
 .docs-img {
     width: 100%;
     border-radius: 6px;
@@ -446,7 +447,7 @@ main.home-container {
 }
 
 .servicos-hero p {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   max-width: 700px;
   margin: 0.5rem auto 2rem auto;
 }
@@ -456,6 +457,7 @@ main.home-container {
   color: var(--cor-primaria);
   padding: 0.8rem 1.5rem;
   font-weight: 600;
+  font-size: 2rem;
   border-radius: 8px;
   transition: 0.3s ease;
 }
@@ -487,6 +489,7 @@ main.home-container {
 
 .servicos-bloco .descricao {
   text-align: center;
+  font-size: 1.4rem;
   max-width: 800px;
   margin: 0 auto 2.5rem auto;
   color: #444;
@@ -525,6 +528,7 @@ main.home-container {
 
 .card p {
   color: #555;
+  font-size: 1.3rem;
   line-height: 1.5;
 }
 
@@ -670,6 +674,15 @@ textarea {
 input:focus,
 textarea:focus {
     border-color: var(--cor-primaria);
+}
+
+/* Consentimento de tratmento de dados */
+
+.rgpd{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 1rem;
 }
 
 .enviar-btn {

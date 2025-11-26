@@ -2,11 +2,18 @@ const express = require ('express');
 
 const exhbs = require('express-handlebars')
 
+const cors = require("cors");
+
+require("dotenv").config();
+
 const path = require ('path');
+const contactRoutes = require('./routes/contacts');
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cors());
+app.use("/api/contact", contactRoutes);
 
 const PORT = process.env.PORT || 3000;
 

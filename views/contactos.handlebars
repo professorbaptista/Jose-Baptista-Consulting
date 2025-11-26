@@ -44,7 +44,7 @@
     <section class="contact-form-section">
         <h2>Envie a sua mensagem</h2>
 
-        <form class="contact-form" action="/enviar-mensagem" method="POST">
+        <form id="contactForm" class="contact-form" action="/send-mail" method="POST">
 
             <div class="form-group">
                 <label for="nome">Nome Completo</label>
@@ -66,8 +66,30 @@
                 <textarea id="mensagem" name="mensagem" placeholder="Escreva a sua mensagem..." rows="6" required></textarea>
             </div>
 
+             <!-- honeypot (esconder via CSS). Nome 'website' é um exemplo -->
+            <div style="display:none!important;position:absolute;left:-9999px;">
+                <label>Website</label>
+                <input type="text" name="website" id="website" autocomplete="off">
+            </div>
+
+            
+  <!-- honeypot (esconder via CSS). Nome 'website' é um exemplo -->
+        <div style="display:none!important;position:absolute;left:-9999px;">
+            <label>Website</label>
+            <input type="text" name="website" id="website" autocomplete="off">
+        </div>
+            <div>
+            <label class="rgpd">
+            <input class="checkbox" type="checkbox" name="rgpd" required>
+                Aceito o tratamento dos meus dados para fins de contacto profissional.
+            </label>
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX"></div>
+
             <button type="submit" class="btn enviar-btn">Enviar Mensagem</button>
         </form>
+        <div id="result"></div>
     </section>
 
     <!-- MAPA OPCIONAL -->
@@ -77,6 +99,62 @@
     </section>
 
 </main>
+
+<!-- reCAPTCHA v3 script (site key) -->
+<script src="https://www.google.com/recaptcha/api.js?render=6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX"></script>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  // obter token reCAPTCHA
+  const siteKey = 'RECAPTCHA_SITEKEY'; // substitui com process.env no build / template
+  const actionName = 'contact';
+
+  try {
+    const token = await grecaptcha.execute(siteKey, { action: actionName });
+    document.getElementById('recaptchaToken').value = token;
+
+    // recolher dados do form
+    const payload = {
+      nome: document.getElementById('nome').value,
+      email: document.getElementById('email').value,
+      mensagem: document.getElementById('mensagem').value,
+      website: document.getElementById('website').value || '',
+      recaptchaToken: token
+    };
+
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const json = await res.json();
+    alert(json.message || 'Resposta recebida');
+
+  } catch (err) {
+    console.error(err);
+    alert('Erro ao submeter. Tenta novamente.');
+  }
+});
+</script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+
+  const response = await fetch("/send-mail", {
+    method: "POST",
+    body: formData
+  });
+
+  const result = await response.json();
+  document.getElementById("result").innerText = result.message;
+});
+</script>
 
 </body>
 </html>
