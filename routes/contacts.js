@@ -14,7 +14,7 @@ router.post("/contact", async (req, res) => {
   const { token } = req.body;
 
   const response = await fetch(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${token}`,
+    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX}&response=${token}`,
     { method: "POST" }
   );
 
@@ -66,7 +66,7 @@ function createTransporter() {
     secure: true,
     auth: {
       user: 'info@josebaptistaconsulting.pt',
-      pass: process.env.SMTP_PASSWORD,
+      pass: process.env.SMTP_CONSULTINGPORTUGAL2025,
     },
   });
 }
