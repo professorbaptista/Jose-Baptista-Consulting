@@ -836,12 +836,12 @@ textarea:focus {
 
 
 /* --- FOOTER FIX --- */
-.footer {
+/* .footer {
     padding: 2rem 1rem;
     background: var(--cor-secundaria);
     text-align: center;
     margin-top: 2rem;
-}
+} */
 
 .footer p {
     color: var(--cor-texto);
