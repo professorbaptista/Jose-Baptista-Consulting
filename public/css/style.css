@@ -860,7 +860,7 @@ textarea:focus {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .footer-section {
@@ -899,6 +899,7 @@ textarea:focus {
     gap: 1rem;
     margin: 0 auto;
     width: 60%;
+    margin-right: 50%;
 }
 
 .social-icons a {
