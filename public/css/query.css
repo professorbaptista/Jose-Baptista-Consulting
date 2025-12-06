@@ -270,7 +270,7 @@
     .footer-content {
         flex-direction: column;
         text-align: center;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .footer-section {
@@ -280,6 +280,12 @@
     .footer-bottom {
         font-size: 0.85rem;
     }
+
+    /* Ícones */
+.social-icons {
+    margin-right: 25%;
+}
+
 }
 
 
