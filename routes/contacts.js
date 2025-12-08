@@ -49,7 +49,7 @@ function createTransporter() {
         port: 465,
         secure: true, // Use SSL/TLS
         auth: {
-            user: 'info@josebaptistaconsulting.pt', // Seu email completo
+            user: 'info@josejbbaptista@gmail.com', // Seu email completo
             // VARIÁVEL DE AMBIENTE CORRIGIDA E MAIS GENÉRICA
             pass: process.env.SMTP_PASSWORD, 
         },
