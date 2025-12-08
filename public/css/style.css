@@ -446,6 +446,10 @@ main.home-container {
   margin-bottom: 1rem;
 }
 
+.servicos-hero img{
+  width: 120px; 
+  height: 160px;
+}
 .servicos-hero p {
   font-size: 1.4rem;
   max-width: 700px;
@@ -564,6 +568,10 @@ main.home-container {
 .cta-final .hero-btn:hover {
   background: rgba(255, 255, 255, 0.85);
 }
+
+/* .cta-final .hero-btn_:hover {
+  background: #464;
+} */
 
 /* Configuration of contacts page */
 /*********************************
