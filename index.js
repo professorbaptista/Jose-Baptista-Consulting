@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const path = require ('path');
 const contactRoutes = require('./routes/contacts');
+const adminRouter = require('./routes/admin');
 
 const app = express();
 // ESTA LINHA É CRÍTICA NO RENDER!
@@ -37,6 +38,9 @@ app.engine('handlebars', exhbs.engine({
 app.set('view engine', 'handlebars')
 // Chamando as rotas
 const mainRoutes = require('./routes/main');
+
+app.use('/admin', adminRouter);
+
 
 app.use('/', mainRoutes)
 
