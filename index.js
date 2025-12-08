@@ -10,6 +10,8 @@ const path = require ('path');
 const contactRoutes = require('./routes/contacts');
 
 const app = express();
+// ESTA LINHA É CRÍTICA NO RENDER!
+app.set('trust proxy', 1);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());

@@ -12,22 +12,22 @@ const nodemailer = require('nodemailer');
 
 const router = express.Router();
 
-router.post("/contact", async (req, res) => {
-  const { token } = req.body;
+// router.post("/contact", async (req, res) => {
+//   const { token } = req.body;
 
-  const response = await fetch(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX}&response=${token}`,
-    { method: "POST" }
-  );
+//   const response = await fetch(
+//     `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX}&response=${token}`,
+//     { method: "POST" }
+//   );
 
-  const data = await response.json();
+//   const data = await response.json();
 
-  if (!data.success) {
-    return res.status(400).json({ message: "Falha no reCAPTCHA" });
-  }
+//   if (!data.success) {
+//     return res.status(400).json({ message: "Falha no reCAPTCHA" });
+//   }
 
-  res.json({ message: "OK" });
-});
+//   res.json({ message: "OK" });
+// });
 
 // --- segurança adicional para esta router (podes aplicar globalmente em index.js) ---
 router.use(helmet());
