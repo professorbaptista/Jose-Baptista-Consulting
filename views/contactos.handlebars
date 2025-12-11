@@ -44,7 +44,7 @@
     <section class="contact-form-section">
         <h2>Envie a sua mensagem</h2>
 
-        <form id="contactForm" class="contact-form" action="/api/contact" method="POST">
+        <form id="contactForm" class="contact-form" action="/contact" method="POST">
 
             <div class="form-group">
                 <label for="nome">Nome Completo</label>
@@ -85,7 +85,7 @@
             </label>
             </div>
 
-            <div class="g-recaptcha" data-sitekey="6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX"></div>
+            {{!-- <div class="g-recaptcha" data-sitekey="6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX"></div> --}}
 
             <button type="submit" class="btn enviar-btn">Enviar Mensagem</button>
         </form>
@@ -99,62 +99,6 @@
     </section>
 
 </main>
-
-<!-- reCAPTCHA v3 script (site key) -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX"></script>
-
-<script>
-document.getElementById('contactForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-
-  // obter token reCAPTCHA
-  const siteKey = '6LcmYxksAAAAABP3oZXVxB14UyftRl_jaa-rlNDX'; // substitui com process.env no build / template
-  const actionName = 'contact';
-
-  try {
-    const token = await grecaptcha.execute(siteKey, { action: actionName });
-    document.getElementById('recaptchaToken').value = token;
-
-    // recolher dados do form
-    const payload = {
-      nome: document.getElementById('nome').value,
-      email: document.getElementById('email').value,
-      mensagem: document.getElementById('mensagem').value,
-      website: document.getElementById('website').value || '',
-      recaptchaToken: token
-    };
-
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    const json = await res.json();
-    alert(json.message || 'Resposta recebida');
-
-  } catch (err) {
-    console.error(err);
-    alert('Erro ao submeter. Tenta novamente.');
-  }
-});
-</script>
-
-{{!-- <script>
-document.getElementById("contactForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(e.target);
-
-  const response = await fetch("/send-mail", {
-    method: "POST",
-    body: formData
-  });
-
-  const result = await response.json();
-  document.getElementById("result").innerText = result.message;
-});
-</script> --}}
 
 </body>
 </html>
