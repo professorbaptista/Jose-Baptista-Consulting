@@ -62,6 +62,7 @@ hbs.handlebars.registerHelper('lt', (a,b,opts) => a < b);
 app.engine('handlebars', hbs.engine);
 
 
+const db = require('./db');
 
 app.use('/admin', adminRouter);
 
