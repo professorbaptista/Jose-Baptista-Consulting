@@ -1,0 +1,20 @@
+{{!-- extends main --}}
+{{!-- title --}}
+<h1 class="small" style="text-align: center; color: #236">Dashboard</h1>
+
+<div class="card" style="width: 600px; margin: 0 auto; border-radius: 12px">
+  <p>Total contactos: <strong>{{total}}</strong></p>
+  <p>Hoje: <strong>{{todayCount}}</strong></p>
+
+  <h4>Últimos 7 dias</h4>
+  <table>
+    <thead><tr><th>Dia</th><th>Contactos</th></tr></thead>
+    <tbody>
+      {{#each last7}}
+        <tr><td>{{this.day}}</td><td>{{this.cnt}}</td></tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <p style="margin-top:.5rem"><a class="btn" href="/admin/contactos">Ver contactos</a></p>
+</div>

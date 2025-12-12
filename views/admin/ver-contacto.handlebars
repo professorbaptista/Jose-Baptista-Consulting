@@ -1,35 +1,56 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contacto #{{id}}</title>
-    <style>
-        body { font-family: Arial; padding: 30px; background: #f5f5f5; }
-        h1 { margin-bottom: 20px; }
-        .card {
-            background: white; padding: 20px; border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        p { margin: 10px 0; }
-        a { color: #0077cc; }
-    </style>
-</head>
-<body>
+<div style="display: flex; justify-content: space-between">
+  <h1>Contactos ({{total}})</h1>
+  <p><a style="margin-right: 5%; font-size: 2rem; text-decoration: none;" href="/admin/contactos">Voltar</a></p>
+</div>
 
-    <h1>Mensagem #{{id}}</h1>
-
-    <div class="card">
-        <p><strong>Nome:</strong> {{nome}}</p>
-        <p><strong>Email:</strong> {{email}}</p>
-        <p><strong>Assunto:</strong> {{assunto}}</p>
-        <p><strong>IP:</strong> {{ip}}</p>
-        <p><strong>Data:</strong> {{data_envio}}</p>
-
-        <h3>Mensagem:</h3>
-        <p>{{{mensagem}}}</p>
+<div class="card filters">
+  <form method="GET" action="/admin/contactos">
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <input type="text" name="q" placeholder="Pesquisar..." value="{{query.q}}">
+      <input type="text" name="email" placeholder="Email" value="{{query.email}}">
+      <input type="text" name="nome" placeholder="Nome" value="{{query.nome}}">
+      <input type="date" name="date_from" value="{{query.date_from}}">
+      <input type="date" name="date_to" value="{{query.date_to}}">
+      <select name="per">
+        <option {{#ifEq per '10'}}selected{{/ifEq}} value="10">10</option>
+        <option {{#ifEq per '15'}}selected{{/ifEq}} value="15">15</option>
+        <option {{#ifEq per '30'}}selected{{/ifEq}} value="30">30</option>
+      </select>
+      <button class="btn" type="submit">Aplicar</button>
+      <a class="btn" href="/admin/export?format=csv&q={{query.q}}&email={{query.email}}&nome={{query.nome}}&date_from={{query.date_from}}&date_to={{query.date_to}}">Exportar CSV</a>
     </div>
+  </form>
+</div>
 
-    <p><a href="/admin/contactos">← Voltar</a></p>
+<div style="height:1rem"></div>
 
-</body>
-</html>
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Nome</th><th>Email</th><th>Assunto</th><th>Data</th><th></th></tr>
+    </thead>
+    <tbody>
+      {{#each contactos}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{nome}}</td>
+        <td>{{email}}</td>
+        <td>{{assunto}}</td>
+        <td>{{data_envio}}</td>
+        <td><a href="/admin/contacto/{{id}}">Ver</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    {{#if (gt page 1)}}
+      <a href="?page={{dec page}}&per={{per}}">« Anterior</a>
+    {{/if}}
+    <span class="small">Página {{page}} de {{pages}}</span>
+    {{#if (lt page pages)}}
+      <a href="?page={{inc page}}&per={{per}}">Próxima »</a>
+    {{/if}}
+  </div>
+</div>
