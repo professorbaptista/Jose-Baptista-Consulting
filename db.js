@@ -1,41 +1,38 @@
-
-// db.js – SQLite compatível com Render
+// db.js — SQLite compatível com Render
 const path = require("path");
 const fs = require("fs");
-const Database = require("better-sqlite3");
+const sqlite3 = require("sqlite3").verbose();
 
-// Caminho da pasta de dados PERSISTENTES
-// No Render, process.cwd() → /opt/render/project/src
-// A pasta /data/ é criada no diretório do projeto (persistente)
 const dataDir = path.join(process.cwd(), "data");
 
-// Criar pasta /data se não existir
 if (!fs.existsSync(dataDir)) {
-    console.log("📁 Pasta /data não existe — criando...");
-    fs.mkdirSync(dataDir, { recursive: true });
+  fs.mkdirSync(dataDir, { recursive: true });
 }
 
-// Caminho completo para a base de dados
 const dbPath = path.join(dataDir, "contactos.db");
 
-console.log("📌 Base de dados carregada em:", dbPath);
+console.log("📌 DB path:", dbPath);
 
-// Criar/abrir a base de dados
-const db = new Database(dbPath, { verbose: console.log });
+const db = new sqlite3.Database(dbPath, err => {
+  if (err) {
+    console.error("❌ Erro ao abrir DB:", err);
+  } else {
+    console.log("✅ SQLite ligado com sucesso");
+  }
+});
 
-// Criar tabela se não existir
-db.exec(`
+db.serialize(() => {
+  db.run(`
     CREATE TABLE IF NOT EXISTS contactos (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL,
-        email TEXT NOT NULL,
-        assunto TEXT,
-        mensagem TEXT NOT NULL,
-        ip TEXT,
-        data_envio DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
-`);
-
-console.log("✅ Tabela contactos verificada/criada.");
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      nome TEXT NOT NULL,
+      email TEXT NOT NULL,
+      assunto TEXT,
+      mensagem TEXT NOT NULL,
+      ip TEXT,
+      data_envio DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+});
 
 module.exports = db;
