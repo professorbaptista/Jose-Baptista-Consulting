@@ -60,13 +60,13 @@ app.set('view engine', 'handlebars')
 // Chamando as rotas
 const mainRoutes = require('./routes/main');
 
-const hbs = exhbs.create({});
-hbs.handlebars.registerHelper('inc', v => v+1);
-hbs.handlebars.registerHelper('dec', v => Math.max(1, v-1));
-hbs.handlebars.registerHelper('ifEq', (a,b,opts) => (String(a)===String(b)) ? opts.fn(this) : opts.inverse(this));
-hbs.handlebars.registerHelper('gt', (a,b,opts) => a > b);
-hbs.handlebars.registerHelper('lt', (a,b,opts) => a < b);
-app.engine('handlebars', hbs.engine);
+// const hbs = exhbs.create({});
+// hbs.handlebars.registerHelper('inc', v => v+1);
+// hbs.handlebars.registerHelper('dec', v => Math.max(1, v-1));
+// hbs.handlebars.registerHelper('ifEq', (a,b,opts) => (String(a)===String(b)) ? opts.fn(this) : opts.inverse(this));
+// hbs.handlebars.registerHelper('gt', (a,b,opts) => a > b);
+// hbs.handlebars.registerHelper('lt', (a,b,opts) => a < b);
+// app.engine('handlebars', hbs.engine);
 
 
 const db = require('./db');
