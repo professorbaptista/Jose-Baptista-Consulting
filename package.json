@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "postinstall": "npm install sqlite3 --build-from-source"
+    "postinstall": "npm install better-sqlite3 --build-from-source"
   },
   "keywords": [
     "prestação",
@@ -18,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "better-sqlite3": "^12.5.0",
+    "connect-redis": "^9.0.0",
     "connect-sqlite3": "^0.9.16",
     "cors": "^2.8.5",
     "csv-stringify": "^6.6.0",

@@ -7,7 +7,6 @@ const cors = require("cors");
 require("dotenv").config();
 
 const session = require('express-session');
-const SQLiteStore = require('connect-sqlite3')(session);
 
 const path = require ('path');
 const contactRoutes = require('./routes/contacts');
@@ -22,20 +21,28 @@ app.use(cors());
 app.use("/contact", contactRoutes);
 
 // session (colocar antes das rotas)
-app.use(session({
-  store: new SQLiteStore({ db: 'sessions.sqlite', dir: './' }),
-  secret: process.env.SESSION_SECRET || 'dev_secret_change_me',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 dia
-}));
+const SQLiteStore = require("connect-sqlite3")(session);
 
-
+app.use(
+  session({
+    store: new SQLiteStore({
+      db: "sessions.db",
+      dir: "./data"  // mesma pasta da base de dados contactos
+    }),
+    secret: process.env.SESSION_SECRET || "segredo-maximo",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false,        // No Render: app é HTTP atrás de proxy
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 2, // 2 horas
+    },
+  })
+);
 
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 // Configuração do handlebars (com partials)
 const viewsPath = path.join(__dirname, 'views')
