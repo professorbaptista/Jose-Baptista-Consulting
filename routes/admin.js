@@ -4,6 +4,26 @@ const authSession = require('../authSession');
 
 const router = express.Router();
 
+// --- ADICIONAR ROTAS DE LOGIN / LOGOUT AQUI (antes do middleware) ---
+router.get('/login', (req, res) => {
+  res.render('admin/login', { error: null });
+});
+
+router.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const adminPassword = process.env.ADMIN_PASSWORD || 'admin';
+
+  if (username === 'admin' && password === adminPassword) {
+    req.session.admin = { user: 'admin' };
+    return res.redirect('/admin/');
+  }
+  res.status(401).render('admin/login', { error: 'Credenciais inválidas' });
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(() => res.redirect('/admin/login'));
+});
+
 router.use(authSession);
 
 // LISTAR CONTACTOS
