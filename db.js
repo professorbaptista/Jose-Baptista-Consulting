@@ -1,38 +1,26 @@
-// db.js — SQLite compatível com Render
-const path = require("path");
-const fs = require("fs");
-const sqlite3 = require("sqlite3").verbose();
 
-const dataDir = path.join(process.cwd(), "data");
+const { Pool } = require('pg');
 
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
-}
+// if (!process.env.DATABASE_URL) {
+//   throw new Error('❌ DATABASE_URL não definida no ambiente');
+// }
 
-const dbPath = path.join(dataDir, "contactos.db");
-
-console.log("📌 DB path:", dbPath);
-
-const db = new sqlite3.Database(dbPath, err => {
-  if (err) {
-    console.error("❌ Erro ao abrir DB:", err);
-  } else {
-    console.log("✅ SQLite ligado com sucesso");
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
   }
 });
 
-db.serialize(() => {
-  db.run(`
-    CREATE TABLE IF NOT EXISTS contactos (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      nome TEXT NOT NULL,
-      email TEXT NOT NULL,
-      assunto TEXT,
-      mensagem TEXT NOT NULL,
-      ip TEXT,
-      data_envio DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-  `);
-});
+// Testar ligação ao arrancar
+(async () => {
+  try {
+    await pool.query('SELECT 1');
+    console.log('✅ PostgreSQL ligado com sucesso');
+  } catch (err) {
+    console.error('❌ Erro PostgreSQL:', err.message);
+    console.error(err);
+  }
+})();
 
-module.exports = db;
+module.exports = pool;

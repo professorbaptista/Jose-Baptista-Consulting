@@ -1,81 +1,68 @@
-const express = require ('express');
 
-const exhbs = require('express-handlebars')
-
-const cors = require("cors");
-
-require("dotenv").config();
-
+const express = require('express');
+const exhbs = require('express-handlebars');
+const cors = require('cors');
 const session = require('express-session');
+const path = require('path');
 
-const path = require ('path');
+require('dotenv').config();
+
 const contactRoutes = require('./routes/contacts');
 const adminRouter = require('./routes/admin');
+const mainRoutes = require('./routes/main');
 
 const app = express();
-// ESTA LINHA É CRÍTICA NO RENDER!
+
+// Render usa proxy
 app.set('trust proxy', 1);
+
+// Middlewares base
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use("/contact", contactRoutes);
 
-// session (colocar antes das rotas)
-const SQLiteStore = require("connect-sqlite3")(session);
-
+// Sessões (SEM SQLite)
 app.use(
   session({
-    store: new SQLiteStore({
-      db: "sessions.db",
-      dir: "./data"  // mesma pasta da base de dados contactos
-    }),
-    secret: process.env.SESSION_SECRET || "segredo-maximo",
+    name: 'admin-session',
+    secret: process.env.SESSION_SECRET || 'segredo-muito-forte',
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false,        // No Render: app é HTTP atrás de proxy
+      secure: false, // Render termina SSL no proxy
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 2, // 2 horas
-    },
+      maxAge: 1000 * 60 * 60 * 2 // 2 horas
+    }
   })
 );
 
-const PORT = process.env.PORT || 3000;
-
+// Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configuração do handlebars (com partials)
-const viewsPath = path.join(__dirname, 'views')
-const layoutsDir = path.join(viewsPath, 'layouts')
-const partialsDir = path.join(viewsPath, 'partials')
+// Handlebars
+const viewsPath = path.join(__dirname, 'views');
+const layoutsDir = path.join(viewsPath, 'layouts');
+const partialsDir = path.join(viewsPath, 'partials');
 
-app.engine('handlebars', exhbs.engine({
+app.engine(
+  'handlebars',
+  exhbs.engine({
     extname: '.handlebars',
     defaultLayout: 'main',
     layoutsDir,
     partialsDir
-}))
+  })
+);
 
-app.set('view engine', 'handlebars')
-// Chamando as rotas
-const mainRoutes = require('./routes/main');
+app.set('view engine', 'handlebars');
 
-// const hbs = exhbs.create({});
-// hbs.handlebars.registerHelper('inc', v => v+1);
-// hbs.handlebars.registerHelper('dec', v => Math.max(1, v-1));
-// hbs.handlebars.registerHelper('ifEq', (a,b,opts) => (String(a)===String(b)) ? opts.fn(this) : opts.inverse(this));
-// hbs.handlebars.registerHelper('gt', (a,b,opts) => a > b);
-// hbs.handlebars.registerHelper('lt', (a,b,opts) => a < b);
-// app.engine('handlebars', hbs.engine);
-
-
-const db = require('./db');
-
+// Rotas
+app.use('/contact', contactRoutes);
 app.use('/admin', adminRouter);
+app.use('/', mainRoutes);
 
-
-app.use('/', mainRoutes)
-
+// Porta
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Aplicativo dos serviços web rodando na porta ${PORT}`);
-}); 
+  console.log(`✅ Aplicação a correr na porta ${PORT}`);
+});
