@@ -62,6 +62,7 @@ router.get('/dashboard', async (req, res) => {
     res.render('admin/dashboard', {
       total: total.rows[0].count,
       dias: porDia.rows
+      
     });
 
   } catch (err) {
