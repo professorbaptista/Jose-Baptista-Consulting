@@ -8,7 +8,10 @@ router.post('/', async (req, res) => {
     const { nome, email, assunto, mensagem } = req.body;
 
     if (!nome || !email || !mensagem) {
-      return res.status(400).json({ ok: false, message: 'Campos obrigatórios em falta' });
+       req.session.flash = {
+        type: 'error',
+        message: 'Preencha todos os campos obrigatórios.'
+      };
     }
 
     await db.query(
@@ -17,7 +20,11 @@ router.post('/', async (req, res) => {
       [nome, email, assunto || null, mensagem, req.ip]
     );
 
-    return res.json({ ok: true, message: 'Mensagem enviada com sucesso' });
+     req.session.flash = {
+        type: 'message',
+        message: 'Formulário enviado com sucesso.'
+      };
+      res.redirect('/contactos')
 
   } catch (err) {
     console.error('Erro contacto:', err);

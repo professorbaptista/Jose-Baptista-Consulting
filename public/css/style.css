@@ -581,6 +581,51 @@ main.home-container {
     padding-top: 130px; /* espaço para o header sticky */
 }
 
+
+/*********************************
+  FLASH MESSAGES
+**********************************/
+
+  .flash {
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 700px;
+  max-height: 80px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+  background: #e6fffa;
+}
+
+.flash-success {
+  
+  color: #065f46;
+  border: 1px solid #34d399;
+}
+
+.flash-error {
+  background: #fee2e2;
+  color: #7f1d1d;
+  border: 1px solid #f87171;
+}
+    .logout-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  top: 15%;
+  right: 14%;
+}
+
+.logout-btn:hover {
+  background: #b91c1c;
+}
+
+
+
 /*********************************
   HERO
 **********************************/

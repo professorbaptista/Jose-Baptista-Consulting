@@ -1,6 +1,11 @@
 {{!-- extends main --}}
 {{!-- title --}}
+
 <h1 class="small" style="text-align: center; color: #236">Dashboard</h1>
+
+<form action="/admin/logout" method="get" style="display:inline;">
+    <button type="submit" class="logout-btn">Logout</button>
+  </form>
 
 <div class="card" style="width: 600px; margin: 0 auto; border-radius: 12px">
   <p>Total contactos: <strong>{{total}}</strong></p>

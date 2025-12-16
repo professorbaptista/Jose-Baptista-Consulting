@@ -22,6 +22,12 @@
         <p>Fale connosco para apoio administrativo, desenvolvimento web ou consultoria profissional.</p>
     </section>
 
+    {{#if flash}}
+        <div class="flash flash-{{flash.type}}">
+            <h3 class="flash-success">{{flash.message}}</h3>
+        </div>
+    {{/if}}
+
     <!-- INFO DE CONTACTO -->
     <section class="contact-info">
         <div class="contact-card">

@@ -5,6 +5,18 @@ const authSession = require('../authSession');
 const router = express.Router();
 
 // --- ADICIONAR ROTAS DE LOGIN / LOGOUT AQUI (antes do middleware) ---
+
+// rota base /admin
+router.get('/', (req, res) => {
+  // se já estiver autenticado, vai para dashboard
+  if (req.session.admin) {
+    return res.redirect('/admin/dashboard');
+  }
+  // senão, vai para login
+  res.redirect('/admin/login');
+});
+
+
 router.get('/login', (req, res) => {
   res.render('admin/login', { error: null });
 });
@@ -15,7 +27,8 @@ router.post('/login', (req, res) => {
 
   if (username === 'admin' && password === adminPassword) {
     req.session.admin = { user: 'admin' };
-    return res.redirect('/admin/');
+    return res.redirect('/admin/dashboard');
+
   }
   res.status(401).render('admin/login', { error: 'Credenciais inválidas' });
 });
@@ -25,6 +38,38 @@ router.get('/logout', (req, res) => {
 });
 
 router.use(authSession);
+
+/* =========================
+   DASHBOARD
+========================= */
+
+router.get('/dashboard', async (req, res) => {
+  try {
+    const total = await db.query(
+      'SELECT COUNT(*) FROM contactos'
+    );
+
+    const porDia = await db.query(`
+      SELECT 
+        DATE(data_envio) AS dia,
+        COUNT(*) AS total
+      FROM contactos
+      GROUP BY dia
+      ORDER BY dia DESC
+      LIMIT 7
+    `);
+
+    res.render('admin/dashboard', {
+      total: total.rows[0].count,
+      dias: porDia.rows
+    });
+
+  } catch (err) {
+    console.error('Erro dashboard:', err);
+    res.status(500).send('Erro ao carregar dashboard');
+  }
+});
+
 
 // LISTAR CONTACTOS
 router.get('/contactos', async (req, res) => {

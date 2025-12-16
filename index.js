@@ -44,17 +44,49 @@ const viewsPath = path.join(__dirname, 'views');
 const layoutsDir = path.join(viewsPath, 'layouts');
 const partialsDir = path.join(viewsPath, 'partials');
 
-app.engine(
-  'handlebars',
-  exhbs.engine({
-    extname: '.handlebars',
-    defaultLayout: 'main',
-    layoutsDir,
-    partialsDir
-  })
-);
+const hbs = exhbs.create({
+  extname: '.handlebars',
+  defaultLayout: 'main',
+  layoutsDir,
+  partialsDir,
+  helpers: {
+    inc: v => Number(v) + 1,
+    dec: v => Math.max(1, Number(v) - 1),
 
+    ifEq: function (a, b, options) {
+      if (options && options.fn) {
+        return String(a) === String(b)
+          ? options.fn(this)
+          : options.inverse(this);
+      }
+      return String(a) === String(b);
+    },
+
+    gt: function (a, b, options) {
+      if (options && options.fn) {
+        return a > b ? options.fn(this) : options.inverse(this);
+      }
+      return a > b;
+    },
+
+    lt: function (a, b, options) {
+      if (options && options.fn) {
+        return a < b ? options.fn(this) : options.inverse(this);
+      }
+      return a < b;
+    }
+  }
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+
+app.use((req, res, next) => {
+  res.locals.flash = req.session.flash || null;
+  delete req.session.flash;
+  next();
+});
 
 // Rotas
 app.use('/contact', contactRoutes);

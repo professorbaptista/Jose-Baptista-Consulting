@@ -5,12 +5,26 @@ const { Pool } = require('pg');
 //   throw new Error('❌ DATABASE_URL não definida no ambiente');
 // }
 
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
 });
+
+pool.query(`
+  CREATE TABLE IF NOT EXISTS contactos (
+    id SERIAL PRIMARY KEY,
+    nome TEXT NOT NULL,
+    email TEXT NOT NULL,
+    assunto TEXT,
+    mensagem TEXT NOT NULL,
+    ip TEXT,
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  )
+`);
+
 
 // Testar ligação ao arrancar
 (async () => {
