@@ -44,10 +44,6 @@
         z-index: 999;
     }
 
-    .dashboard{
-        display: none;
-    }
-
     .menu-toggle {
         display: block;
         font-size: 2rem;
@@ -205,7 +201,7 @@
     }
     
     .numeros-empresa .projeto{
-      width: 200px;
+      max-width: 250px;
       height: 60px;
     }
 
@@ -217,8 +213,8 @@
      /* Posicionamento dos cards */
     .numeros-empresa .card-concluido{
       position: absolute;
-      left: -8%;
-      top: 0;
+      left: 2%;
+      top: 2%;
     }
 
     .numeros-empresa .card-colaboradores{
@@ -230,7 +226,7 @@
     .numeros-empresa .card-clientes{
       position: absolute;
       bottom: 2%;
-      right: 2%;
+      left: 2%;
     }
 
     /* section equipa */
@@ -520,3 +516,4 @@ section.about img {
         font-size: 1.7rem;
     }
 }
+
