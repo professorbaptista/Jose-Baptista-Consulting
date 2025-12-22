@@ -47,6 +47,7 @@
             <th>Mensagem</th>
             <th>Data</th>
             <th>Abrir</th>
+            <th>Apagar</th>
         </tr>
 
         {{#each contactos}}
@@ -58,6 +59,17 @@
             <td>{{this.mensagem}}</td>
             <td>{{this.data_envio}}</td>
             <td><a href="/admin/contacto/{{this.id}}">Ver</a></td>
+            <td>
+            <form action="/admin/contacto/{{id}}/apagar"
+                method="POST"
+                onsubmit="return confirm('Tem certeza que deseja apagar         esta mensagem?');"
+                style="display:inline;">
+            <button class="btn btn-danger btn-sm">
+                    Apagar
+            </button>
+            </form>
+            </td>
+
         </tr>
         {{/each}}
     </table>

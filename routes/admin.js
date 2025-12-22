@@ -110,4 +110,21 @@ router.get('/contacto/:id', async (req, res) => {
   }
 });
 
+// APAGAR CONTACTO
+router.post('/contacto/:id/apagar', async (req, res) => {
+  try {
+    await db.query(
+      'DELETE FROM contactos WHERE id = $1',
+      [req.params.id]
+    );
+
+    res.redirect('/admin/contactos');
+
+  } catch (err) {
+    console.error('Erro ao apagar contacto:', err);
+    res.status(500).send('Erro interno');
+  }
+});
+
+
 module.exports = router;

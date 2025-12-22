@@ -73,7 +73,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 74px;
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -87,6 +87,18 @@ header .logo{
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+}
+
+.logo .j{
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--cor-acento);
+}
+
+.logo .b{
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--cor-acento);
 }
 
 /* Logo / brand */
@@ -548,15 +560,23 @@ main.home-container {
   color: var(--cor-branco);
   margin: 0;
 }
+ 
+.about{
+  max-width: 890px;
+  display: flex;
+  gap: 5rem;
+  margin: 0 auto;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
 
-  section.about .text {
+.about .text {
       flex: 1;
       min-width: 250px;
-    
     }
     section.about .text h2 {
-      color: var(--cor-principal);
-      font-size: 1.25rem;
+      color: var(--cor-primaria);
+      font-size: 2.25rem;
       margin-bottom: 0.75rem;
     }
 
