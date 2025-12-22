@@ -358,28 +358,201 @@ main.home-container {
       background: linear-gradient(90deg, rgba(0,87,217,0.05), rgba(0,127,63,0.02));
     }
     .page-title { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+
+    /* Section sobre Nós */
+    .nossa-empresa{
+      width: 980px;
+      margin: 5px auto;
+    }
+    .nossa-empresa h2{
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      color: var(--cor-destaque-vermelho);
+      margin: 3rem 0 3rem 0;
+    }
+
+    .nossa-empresa .conheca-nos{
+      font-size: 5rem;
+      color: var(--cor-primaria);
+      margin-bottom: 3rem;
+    }
+
+    /* section of image */
+    .sobre-nos{
+      width: 980px;
+      margin: 5px auto; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      background-color: linear-gradient(90deg, rgba(0,87,217,0.05), rgba(0,127,63,0.02));
+
+    }
+
+    
     .lead { 
         color: #374151; 
         font-size: 1.25rem;
         line-height: 2.4rem; 
     }
 
-    section.about {
-      display: flex;
-      align-items: flex-start;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
+    /* Card dos numeros */
+    .numeros-empresa{
+      position: relative;
+      z-index: -100;
     }
-    section.about img {
-      max-width: 300px;
-      width: 100%;
+    .numeros-empresa .projeto{
+      width: 230px;
+      height: 70px;
+      background-color: var(--cor-acento);
+      border-radius: 12px;
+      padding: 5px;
+      
+    }
+
+    .numeros-empresa .projeto p{
+      color: var(--cor-branco);
+      font-size: 1.3rem;
+    }
+
+    .numeros-empresa img {
+      width: 300px;
+      height: 360px;
       border-radius: 10px;
       flex-shrink: 0;
     }
-    section.about .text {
+
+    /* Posicionamento dos cards */
+    .numeros-empresa .card-concluido{
+      position: absolute;
+      left: -38%;
+      top: 0;
+    }
+
+    .numeros-empresa .card-colaboradores{
+      position: absolute;
+      top: 38%;
+      right: -35%;
+    }
+
+    .numeros-empresa .card-clientes{
+      position: absolute;
+      bottom: 2%;
+      right: 2%;
+    }
+
+    /* section equipa */
+    .equipa-text{
+      width: 1180px;
+      margin: 0 auto;
+    }
+    .equipa-text h2{
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.3rem;
+      color: var(--cor-texto);
+      margin-top: 5rem;
+    }
+
+    .equipa-text p{
+      text-align: center;
+      font-size: 5rem;
+      color: var(--cor-primaria);
+      margin: 3rem 0 2rem 0;
+    }
+
+    /* image of the team members */
+    .equipa-group{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .especialist-img{
+      width: 250px;
+    }
+
+    .equipa-group .especialist{
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+    }
+
+    .especialist-img h3{
+      text-align: center;
+      color: #0B3D91;
+      font-size: 1.4rem;
+      margin: 2rem 0 1rem 0;
+    }
+
+    .especialist-img p{
+      text-align: center;
+      color: #1a1a1a;
+      font-size: 1.1rem;
+    }
+
+    /* Hero section  */
+.hero-sec {
+  min-height: 50vh;
+  background-color: var(--cor-primaria);
+  margin: 2rem 0;
+  padding: 2rem 1.5rem;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Texto principal */
+.big-text {
+  width: 100%;
+  position: relative;
+  top: auto;
+  left: auto;
+  text-align: left;
+}
+
+.big-text h2 {
+  text-transform: uppercase;
+  color: var(--cor-fundo-base);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.big-text p {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  color: var(--cor-branco);
+  font-weight: 700;
+}
+
+/* Bloco profissionalismo */
+.profissio {
+  display: flex;
+  flex-direction: row;
+  gap: 21rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  position: relative;
+  top: auto;
+  left: auto;
+}
+
+/* Título secundário */
+.profissionalismo h3 {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: var(--cor-branco);
+  margin: 0;
+}
+
+  section.about .text {
       flex: 1;
       min-width: 250px;
+    
     }
     section.about .text h2 {
       color: var(--cor-principal);
