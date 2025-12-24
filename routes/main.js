@@ -36,15 +36,32 @@ router.get('/termos-condicoes', (req, res) => {
 })
 
 
-router.use('/pageNotFound', (req, res) => {
+router.get('/pageNotFound', (req, res) => {
     res.status(404)
     res.render('404', {title: 'Pagina não encontrada'})
 })
 
-router.use('/serverError', (req, res) => {
-    res.status(500)
-    res.render('500', {title: 'Erro de servidor'})
+// Rota do blogue
+router.get('/blogue', (req, res) => {
+    
+    res.render('blogues/blogue', {title: 'Página Blogue'})
 });
+
+// Rota blogue artigo sobre o NIF
+router.get('/blogue-nif', (req, res)=> {
+  res.render('blogues/conteudo-blogue/como-tirar-nif', {title: 'Como tirar o NIF'})
+});
+
+// Rota blogue do artigo sobre o NISS
+router.get('/blogue-niss', (re, res) =>{
+  res.render('blogues/conteudo-blogue/como-tirar-niss', {title: 'Como Adquirir o NISS' })
+});
+
+// Rota blogue do artigo sobre o currículos
+router.get('/blogue-curriculo', (req, res) => {
+
+  res.render('blogues/conteudo-blogue/curriculo', {title: 'Conteúdo sobre currículo'})
+})
 
 // Rota para envio e tratamento dos dados dos clientes
 

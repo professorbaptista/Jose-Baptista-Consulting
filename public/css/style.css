@@ -699,7 +699,7 @@ main.home-container {
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(274px, 1fr));
   gap: 1.5rem;
 }
 
@@ -724,6 +724,12 @@ main.home-container {
 }
 
 .card p {
+  color: #555;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.card ul li{
   color: #555;
   font-size: 1.3rem;
   line-height: 1.5;
@@ -762,9 +768,22 @@ main.home-container {
   background: rgba(255, 255, 255, 0.85);
 }
 
-/* .cta-final .hero-btn_:hover {
-  background: #464;
-} */
+.cta-card{
+  margin-top: 2.4rem;
+}
+.card-btn{
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.card-btn:hover{
+  background-color: var(--cor-acento);
+}
 
 /* Configuration of contacts page */
 /*********************************
