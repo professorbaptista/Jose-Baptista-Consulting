@@ -1,16 +1,15 @@
 
+
 User-agent: *
 Allow: /
 
-# Bloqueia pastas técnicas — ajuste se necessário
-User-agent: *
-Allow: /
-
-Sitemap: https://josebaptistaconsulting.pt/sitemap.xml
-
-# Bloquear ficheiros sensíveis
+# Bloquear páginas que não precisam de ser indexadas
+Disallow: /api/
+Disallow: /logout/
 Disallow: /admin/
-Disallow: /config/
-Disallow: /private/
+Disallow: /login/
+
+# Indicar o caminho para o Sitemap (Substitua pelo seu domínio final)
+Sitemap: https://www.josebaptistaconsulting.pt/sitemap.xml
 
 

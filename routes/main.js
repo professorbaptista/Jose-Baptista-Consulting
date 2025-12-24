@@ -49,18 +49,19 @@ router.get('/blogue', (req, res) => {
 
 // Rota blogue artigo sobre o NIF
 router.get('/blogue-nif', (req, res)=> {
-  res.render('blogues/conteudo-blogue/como-tirar-nif', {title: 'Como tirar o NIF'})
+  res.render('blogues/conteudo-blogue/como-tirar-nif', {title: 'Como tirar o NIF em Portugal em 2026?', subtitle: 'Guia completo para estrangeiros'})
 });
 
 // Rota blogue do artigo sobre o NISS
 router.get('/blogue-niss', (re, res) =>{
-  res.render('blogues/conteudo-blogue/como-tirar-niss', {title: 'Como Adquirir o NISS' })
+  res.render('blogues/conteudo-blogue/como-tirar-niss', {title: 'Como Obter o NISS em Portugal', subtitle: 'Guia Completo para Trabalhadores e Imigrantes' })
 });
+
 
 // Rota blogue do artigo sobre o currículos
 router.get('/blogue-curriculo', (req, res) => {
 
-  res.render('blogues/conteudo-blogue/curriculo', {title: 'Conteúdo sobre currículo'})
+  res.render('blogues/conteudo-blogue/curriculo', {title: 'Currículos Profissionais', subtitle: 'Preparação para Entrevistas'})
 })
 
 // Rota para envio e tratamento dos dados dos clientes

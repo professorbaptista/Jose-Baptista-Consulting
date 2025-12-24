@@ -55,5 +55,20 @@
     <priority>0.10</priority>
     <changefreq>yearly</changefreq>
   </url>
+  <url>
+    <loc>https://josebaptistaconsulting.pt/como-tirar-nif</loc>
+    <priority>0.10</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://josebaptistaconsulting.pt/como-tirar-niss</loc>
+    <priority>0.10</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://josebaptistaconsulting.pt/curriculo</loc>
+    <priority>0.10</priority>
+    <changefreq>yearly</changefreq>
+  </url>
 
 </urlset>
