@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 
 router.get('/', (req, res) => {
     res.render('home', { title: 'Soluções Profissionais em Apoio Administrativo', subtitle: 'Apoio dedicado para imigrantes em Portugal.'})    
-})
+});
 
 router.get('/about', (req, res) => {
     res.render('about', {title: 'Saiba mais Sobre Mim'})
@@ -29,7 +29,7 @@ router.get('/contactos', (req, res) => {
 
 router.get('/politica-privacidade', (req, res) => {
     res.render('politica')
-})
+});
 
 router.get('/termos-condicoes', (req, res) => {
     res.render('termos')
@@ -44,12 +44,12 @@ router.get('/pageNotFound', (req, res) => {
 // Rota do blogue
 router.get('/blogue', (req, res) => {
     
-    res.render('blogues/blogue', {title: 'Página Blogue'})
+    res.render('blogues/blogue', {title: 'Chegou, Recentemente, à Portugal?', subtitle: 'Saiba o que Fazer Primeiro!'})
 });
 
 // Rota blogue artigo sobre o NIF
 router.get('/blogue-nif', (req, res)=> {
-  res.render('blogues/conteudo-blogue/como-tirar-nif', {title: 'Como tirar o NIF em Portugal em 2026?', subtitle: 'Guia completo para estrangeiros'})
+  res.render('blogues/conteudo-blogue/como-tirar-nif', {title: 'Como Tirar o NIF em Portugal em 2026?', subtitle: 'Guia completo para estrangeiros'})
 });
 
 // Rota blogue do artigo sobre o NISS

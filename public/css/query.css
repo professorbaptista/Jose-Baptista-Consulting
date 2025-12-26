@@ -172,6 +172,36 @@
         text-align: justify;
     }
 
+   .autor-container{
+      max-width: 100%;
+    }
+
+    .autor-container h1{
+      font-size: 2.5rem;
+    }
+
+    .autor-container p a{
+      font-size: 1.6rem;
+    }
+
+    .autor-container .sobre-text{
+      margin-left: 2rem;
+    }
+    
+    .autor{
+    flex-direction: column;
+    
+    }
+
+    .autor-img{
+     max-width: 300px;
+     margin-top: .5rem; 
+    
+    }
+
+   ul{
+    margin-left: 2rem;
+   }
     /* section nossa empresa */
 
     .nossa-empresa{
