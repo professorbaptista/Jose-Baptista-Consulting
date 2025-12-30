@@ -50,7 +50,7 @@ router.get('/blogue', (req, res) => {
 // Rota blogue artigo sobre o NIF
 router.get('/blogue-nif', (req, res)=> {
   res.render('blogues/conteudo-blogue/como-tirar-nif', {title: 'Como Tirar o NIF em Portugal em 2026?', subtitle: 'Guia completo para estrangeiros'})
-});
+}); 
 
 // Rota blogue do artigo sobre o NISS
 router.get('/blogue-niss', (re, res) =>{
