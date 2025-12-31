@@ -3,70 +3,75 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/</loc>
+    <loc>https://josebaptistaconsulting.com/</loc>
     <priority>1.00</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/sobre</loc>
+    <loc>https://josebaptistaconsulting.com/sobre</loc>
     <priority>0.90</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/servicos</loc>
+    <loc>https://josebaptistaconsulting.com/servicos</loc>
     <priority>0.90</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/depoimentos</loc>
+    <loc>https://josebaptistaconsulting.com/depoimentos</loc>
     <priority>0.80</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/contactos</loc>
+    <loc>https://josebaptistaconsulting.com/contactos</loc>
     <priority>0.85</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/politicas</loc>
+    <loc>https://josebaptistaconsulting.com/politicas</loc>
     <priority>0.30</priority>
     <changefreq>yearly</changefreq>
   </url>
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/termos</loc>
+    <loc>https://josebaptistaconsulting.com/termos</loc>
     <priority>0.30</priority>
     <changefreq>yearly</changefreq>
   </url>
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/404</loc>
+    <loc>https://josebaptistaconsulting.com/404</loc>
     <priority>0.10</priority>
     <changefreq>yearly</changefreq>
   </url>
 
   <url>
-    <loc>https://josebaptistaconsulting.pt/500</loc>
+    <loc>https://josebaptistaconsulting.com/500</loc>
     <priority>0.10</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://josebaptistaconsulting.pt/como-tirar-nif</loc>
+    <loc>https://josebaptistaconsulting.com/blogue</loc>
     <priority>0.10</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://josebaptistaconsulting.pt/como-tirar-niss</loc>
+    <loc>https://josebaptistaconsulting.com/como-tirar-nif</loc>
     <priority>0.10</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://josebaptistaconsulting.pt/curriculo</loc>
+    <loc>https://josebaptistaconsulting.com/como-tirar-niss</loc>
+    <priority>0.10</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://josebaptistaconsulting.com/curriculo</loc>
     <priority>0.10</priority>
     <changefreq>yearly</changefreq>
   </url>
