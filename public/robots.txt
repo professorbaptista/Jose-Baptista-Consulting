@@ -10,6 +10,6 @@ Disallow: /admin/
 Disallow: /login/
 
 # Indicar o caminho para o Sitemap (Substitua pelo seu domínio final)
-Sitemap: https://www.josebaptistaconsulting.pt/sitemap.xml
+Sitemap: https://www.josebaptistaconsulting.com/sitemap.xml
 
 
