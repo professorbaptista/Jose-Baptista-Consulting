@@ -50,10 +50,11 @@
     <section class="contact-form-section">
         <h2>Envie a sua mensagem</h2>
 
-        <form id="contactForm" class="contact-form" action="/contact" method="POST">
+        <form id="contactForm" class="contact-form" action="/" method="POST" onsubmit="enviarFormulario(event)">
             <div class="form-group">
             <label for="nome">Nome Completo</label>
             <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
         </div>
 
         <div class="form-group">
@@ -94,6 +95,60 @@
                 Aceito o tratamento dos meus dados para fins de contacto profissional.
             </label>
             </div>
+
+            <script src="https://www.google.com/recaptcha/api.js?render=6LdxxT0sAAAAAOeecPSf8p7YD3GSwvnrccNIuHO8"></script>
+
+<script>
+        function enviarFormulario(e) {
+  e.preventDefault();
+  
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6LdxxT0sAAAAAOeecPSf8p7YD3GSwvnrccNIuHO8', {action: 'submit'}).then(function(token) {
+      document.getElementById('g-recaptcha-response').value = token;
+      
+      const form = document.getElementById('contactForm');
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      // Envia os dados via Fetch (AJAX)
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          // SE TUDO ESTIVER OK, REDIRECIONA MANUALMENTE
+          window.location.href = '/contactos'; 
+        } else {
+          alert('Erro na verificação de segurança. Tente novamente.');
+        }
+      })
+      .catch(error => console.error('Erro:', error));
+    });
+  });
+}
+</script>
+
+        {{!-- <script>
+        
+         function enviarFormulario(e) {
+    e.preventDefault(); // Impede o envio imediato para verificar o Google primeiro
+    
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6LdxxT0sAAAAAOeecPSf8p7YD3GSwvnrccNIuHO8', {action: 'submit'}).then(function(token) {
+        // 1. Coloca o token no campo oculto
+        document.getElementById('g-recaptcha-response').value = token;
+        
+        // 2. Envia o formulário agora que temos o token (usando o ID correto: contactForm)
+        document.getElementById('contactForm').submit();
+      });
+    });
+  }
+</script> --}}
+
+
+  
 
             <button type="submit" class="btn enviar-btn">Enviar Mensagem</button>
         </form>

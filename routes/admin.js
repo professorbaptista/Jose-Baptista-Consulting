@@ -55,7 +55,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.use(authSession);
-router.use(filtroSegurancaIP);
+
 
 /* =========================
    DASHBOARD
@@ -143,6 +143,8 @@ router.post('/contacto/:id/apagar', async (req, res) => {
     res.status(500).send('Erro interno');
   }
 });
+
+router.use(filtroSegurancaIP);
 
 
 module.exports = router;

@@ -24,7 +24,8 @@ router.get('/depoimentos', (req, res) => {
 })
 
 router.get('/contactos', (req, res) => {
-    res.render('contactos', {title: 'Meus contactos'})
+
+  res.render('contactos', {title: 'Meus contactos'})
 })
 
 router.get('/politica-privacidade', (req, res) => {
@@ -84,8 +85,13 @@ router.post("/", async (req, res) => {
       port: 587,
       secure: false,
       auth: {
-        user: "info@josebaptistaconsulting.pt",
-        pass: "AQUI_A_PASSWORD_DO_EMAIL"
+        user: "josejbbaptista@gmail.com",
+        pass: "ifdorhkcyksdeuqw"
+      },
+
+      // ADICIONE ISTO AQUI:
+      tls: {
+        rejectUnauthorized: false
       }
     });
 
