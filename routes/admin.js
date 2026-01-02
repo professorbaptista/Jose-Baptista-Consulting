@@ -4,6 +4,23 @@ const authSession = require('../authSession');
 
 const router = express.Router();
 
+// No seu ficheiro de rotas admin
+const MEU_IP_AUTORIZADO = process.env.ADMIN_ALLOWED_IP || '94.62.140.22';
+
+const filtroSegurancaIP = (req, res, next) => {
+    // Captura o IP real através do proxy do Render
+    const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+    if (ipCliente && ipCliente.includes(MEU_IP_AUTORIZADO)) {
+        return next();
+    } else {
+        console.warn(`Tentativa de acesso bloqueada ao admin: IP ${ipCliente}`);
+        res.status(404).send('Página não encontrada');
+    }
+};
+
+
+
 // --- ADICIONAR ROTAS DE LOGIN / LOGOUT AQUI (antes do middleware) ---
 
 // rota base /admin
@@ -38,6 +55,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.use(authSession);
+router.use(filtroSegurancaIP);
 
 /* =========================
    DASHBOARD

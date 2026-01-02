@@ -973,6 +973,30 @@ main.home-container {
 }
 
 .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box; /* Garante que o padding não quebra o layout */
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+.form-group {
     margin-bottom: 1.5rem;
 }
 

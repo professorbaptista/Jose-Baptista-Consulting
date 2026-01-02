@@ -51,26 +51,30 @@
         <h2>Envie a sua mensagem</h2>
 
         <form id="contactForm" class="contact-form" action="/contact" method="POST">
-
             <div class="form-group">
-                <label for="nome">Nome Completo</label>
-                <input type="text" id="nome" name="nome" required placeholder="O seu nome">
-            </div>
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="O seu email">
-            </div>
+        <div class="form-group">
+            <label for="email">E-mail Profissional</label>
+            <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+        </div>
 
-            <div class="form-group">
-                <label for="assunto">Assunto</label>
-                <input type="text" id="assunto" name="assunto" required placeholder="Motivo do contacto">
-            </div>
+        <div class="form-group">
+            <label for="assunto">Assunto</label>
+            <select id="assunto" name="assunto">
+                <option value="consultoria">Consultoria de Carreira</option>
+                <option value="apoio com documentação">Apoio com Documentação</option>
+                <option value="parceria">Proposta de Parceria</option>
+                <option value="outro">Outro assunto</option>
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="mensagem">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" placeholder="Escreva a sua mensagem..." rows="6" required></textarea>
-            </div>
+        <div class="form-group">
+            <label for="mensagem">Como podemos ajudar?</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Descreva brevemente a sua necessidade..." required></textarea>
+        </div>
 
              <!-- honeypot (esconder via CSS). Nome 'website' é um exemplo -->
             <div style="display:none!important;position:absolute;left:-9999px;">
