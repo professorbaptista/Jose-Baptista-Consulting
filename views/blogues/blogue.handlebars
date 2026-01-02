@@ -125,6 +125,19 @@
          margin-left: 6rem;
       }
 
+      .card-btn-blog{
+         background-color: #0B3D91;
+         color: #fff;
+         cursor: pointer;
+         border-radius: 12px;
+         font-size: 2rem;
+         padding: 4px;
+         width: 100%;
+      }
+
+      .card-btn-blog:hover{
+         background-color: #FFB020;
+      }
       .ads-placeholder{
          background-color: : #f9f9f9;
          border: 1px dashed #ccc;
@@ -262,9 +275,9 @@
              <h1 class="title">{{title}}</h1>
          </div>
 
-          <div class="ads-placeholder">
+          {{!-- <div class="ads-placeholder">
             Anúncio AdSense(Display Here)
-          </div>
+          </div> --}}
 
           <div>
              <h2 class="subtitle">{{subtitle}}</h2>
@@ -276,7 +289,7 @@
                  
                   <p class="text">Se planeia viver, trabalhar, estudar ou investir em Portugal, o primeiro passo da sua jornada tem nome: NIF. O Número de Identificação Fiscal</p>
                    <h3>Como Tirar o NIF em Portugal?</h3>
-                     <a href="/blogue-nif" class="card-btn">Saber Mais</a>
+                     <a href="/blogue-nif" class="card-btn-blog">Saber Mais</a>
                
             </div>
             <div class="blogue-card">
@@ -284,7 +297,7 @@
                  
                   <p class="text">Se o NIF é sua porta de entrada em Portugal, o NISS (Número de Identificação de Segurança Social) é o documento que garante os seus direitos enquanto trabalhador e cidadão.</p>
                    <h3>Como Obter o NISS em Portugal?</h3>
-                   <a href="/blogue-niss" class="card-btn">Saber Mais 
+                   <a href="/blogue-niss" class="card-btn-blog">Saber Mais 
                </a>
                
             </div>
@@ -292,16 +305,22 @@
                <img src="/images/treinamento.webp">
                   <p class="text">Se o seu objetivo é trabalhar, então não faça do seu currículo apenas uma lista de experiências; ela é a sua principal ferramenta de marketing. Faça dele o seu principal aliado no mercado de trabalho português.</p>
                   <h3>Como Tornar o seu Currículo Mais Profissional?</h3>
-                  <a href="/blogue-curriculo" class="card-btn">Saber Mais</a>
+                  <a href="/blogue-curriculo" class="card-btn-blog">Saber Mais</a>
                
+            </div>
+            <div class="blogue-card">
+               <img src="/images/jovem-perturbado.webp" alt="Imagem de Currículo Europass">
+               <p class="text">Por que muitas pessoas enviam currículos e não são chamadas?</p>
+               <h3>5 erros comuns que fazem o seu currículo ser descartado em 6 segundos</h3>
+               <a href="/blogue-erros-curriculo" class="card-btn-blog">Saiba Mais</a>
             </div>
             {{!-- <div class="blogue-card"></div> --}}
           </div>
           
 
-          <div class="ads-placeholder">
+          {{!-- <div class="ads-placeholder">
             Anúncio AdSense(Display).
-          </div>
+          </div> --}}
           
       </article>
     </main>  

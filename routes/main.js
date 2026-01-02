@@ -64,6 +64,11 @@ router.get('/blogue-curriculo', (req, res) => {
   res.render('blogues/conteudo-blogue/curriculo', {title: 'Currículos Profissionais', subtitle: 'Preparação para Entrevistas'})
 })
 
+router.get('/blogue-erros-curriculo', (req, res) =>{
+
+  res.render('blogues/conteudo-blogue/erros-curriculo', {title: '5 Erros Críticos que Fazem o seu Currículo ser Descartado em 6 Segundos'});
+})
+
 // Rota para envio e tratamento dos dados dos clientes
 
 router.post("/", async (req, res) => {
