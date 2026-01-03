@@ -71,10 +71,36 @@ router.get('/blogue-erros-curriculo', (req, res) =>{
   res.render('blogues/conteudo-blogue/erros-curriculo', {title: '5 Erros Críticos que Fazem o seu Currículo ser Descartado em 6 Segundos'});
 });
 
-router.get('/obrigado', (req, res) => {
 
-  res.render('obrigado', { title: "Obrigado pelo Seu Contacto!"})
-    // res.sendFile(path.join(__dirname, '../views/obrigado.handlebars'));
+const geoip = require('geoip-lite');
+
+router.get('/obrigado', async (req, res) => {
+    // 1. Obter o IP do visitante (considerando o proxy do Render)
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const geo = geoip.lookup(ip);
+    const pais = geo ? geo.country : 'Desconhecido';
+
+    // 2. Se o país for Portugal (PT), enviamos um alerta imediato
+    if (pais === 'PT') {
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'josejbbaptista@gmail.com',
+                pass: process.env.EMAIL_PASS // A sua App Password de 16 caracteres
+            }
+        });
+
+        await transporter.sendMail({
+            from: 'Sistema de Alertas <josejbbaptista@gmail.com>',
+            to: 'josejbbaptista@gmail.com',
+            subject: '🚩 NOVA LEAD DE PORTUGAL!',
+            text: `Um utilizador de Portugal acabou de chegar à página de agradecimento. Verifique o seu painel de admin ou o seu email para ver os detalhes do contacto.`
+        });
+    }
+
+    res.render('obrigado', { title: 'Obrigado pelo seu Contacto!'})
+
+    // res.sendFile(path.join(__dirname, '../views/obrigado.html'));
 });
 
 // Rota para envio e tratamento dos dados dos clientes
