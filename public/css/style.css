@@ -1181,15 +1181,17 @@ textarea:focus {
 }
 
 /* Rota Obrigado */
-.thank-you-container{
-  width: 700px;
+.thank-you-container {
+  width: 90%;            /* Usa 90% da largura em ecrãs pequenos */
+  max-width: 700px;      /* Mas nunca ultrapassa os 700px em computadores */
   padding: 20px;
   background-color: var(--cor-branco);
   border: 1px solid #003A8C;
   border-radius: 12px;
-  margin: 0 auto;
-  margin-top: 2rem;
-
+  margin: 120px auto 50px; /* Aumentado o topo para 120px para fugir do menu */
+  position: relative;
+  z-index: 1;
+  text-align: center;    /* Centraliza o conteúdo interno */
 }
 
 .thank-you-container h1{

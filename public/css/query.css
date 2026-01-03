@@ -87,6 +87,11 @@
   position: relative;
   display: inline-block;
   margin-right: 10%;
+  
+}
+
+.dropdown.show{
+  display: none !important;
 }
 
 .dropdown-content {
@@ -515,6 +520,8 @@
     /* Rota Obrigado */
 .thank-you-container{
   max-width: 96%;
+  margin-top: 140px;   /* Mais espaço no mobile */
+  padding: 15px;
 }
 
 .thank-you-container h1{
