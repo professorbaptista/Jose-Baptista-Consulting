@@ -3,6 +3,7 @@ const express = require('express');
 
 const router = express.Router();
 const nodemailer = require("nodemailer");
+const path = require('path');
 
 router.get('/', (req, res) => {
     res.render('home', { title: 'Soluções Profissionais em Apoio Administrativo', subtitle: 'Apoio dedicado para imigrantes em Portugal.'})    
@@ -68,7 +69,13 @@ router.get('/blogue-curriculo', (req, res) => {
 router.get('/blogue-erros-curriculo', (req, res) =>{
 
   res.render('blogues/conteudo-blogue/erros-curriculo', {title: '5 Erros Críticos que Fazem o seu Currículo ser Descartado em 6 Segundos'});
-})
+});
+
+router.get('/obrigado', (req, res) => {
+
+  res.render('obrigado', { title: "Obrigado pelo Seu Contacto!"})
+    // res.sendFile(path.join(__dirname, '../views/obrigado.handlebars'));
+});
 
 // Rota para envio e tratamento dos dados dos clientes
 

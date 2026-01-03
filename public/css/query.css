@@ -511,6 +511,26 @@
         font-size: 2rem;
     }
 
+
+    /* Rota Obrigado */
+.thank-you-container{
+  max-width: 96%;
+}
+
+.thank-you-container h1{
+  font-size: 1.6rem;
+  text-align: start;
+}
+
+.thank-you-container p{
+  font-size: 1.2rem;
+}
+
+.thank-you-container a{
+  text-decoration: none;
+  font-size: 1rem;
+}
+
     /* -------- FOOTER -------- */
     .footer-content {
         flex-direction: column;

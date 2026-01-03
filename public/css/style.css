@@ -1180,14 +1180,36 @@ textarea:focus {
     margin: 2rem 0 2rem 0;
 }
 
+/* Rota Obrigado */
+.thank-you-container{
+  width: 700px;
+  padding: 20px;
+  background-color: var(--cor-branco);
+  border: 1px solid #003A8C;
+  border-radius: 12px;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+}
+
+.thank-you-container h1{
+  text-align: center;
+  color: var(--cor-primaria);
+  margin: 1.5rem 1.5rem;
+}
+
+.thank-you-container p{
+  color: var(--cor-muted);
+  margin: 1rem 1rem;
+}
+
+.thank-you-container a{
+  text-decoration: none;
+  font-size: 1.5rem;
+  text-align: center;
+}
 
 /* --- FOOTER FIX --- */
-/* .footer {
-    padding: 2rem 1rem;
-    background: var(--cor-secundaria);
-    text-align: center;
-    margin-top: 2rem;
-} */
 
 .footer p {
     color: var(--cor-texto);
