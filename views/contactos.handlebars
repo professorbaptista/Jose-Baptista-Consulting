@@ -1,22 +1,22 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactos — José Baptista Consulting</title>
-<meta name="description" content="Entre em contacto para marcação de consultoria, orientação profissional ou parcerias.">
+    <meta name="description" content="Entre em contacto para marcação de consultoria, orientação profissional ou parcerias.">
 
-<meta property="og:title" content="Fale Connosco">
-<meta property="og:description" content="Entre em contacto para consultoria profissional.">
-<meta property="og:url" content="https://josebaptistaconsulting.pt/contactos">
-<meta property="og:image" content="https://josebaptistaconsulting.pt/assets/og-contactos.jpg">
+    <meta property="og:title" content="Fale Connosco">
+    <meta property="og:description" content="Entre em contacto para consultoria profissional.">
+    <meta property="og:url" content="https://josebaptistaconsulting.pt/contactos">
+    <meta property="og:image" content="https://josebaptistaconsulting.pt/assets/og-contactos.jpg">
 
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdxxT0sAAAAAOeecPSf8p7YD3GSwvnrccNIuHO8"></script>
 </head>
 <body>
   <main class="contactos-page">
 
-    <!-- HERO -->
     <section class="contactos-hero">
         <h1>Contacte-nos</h1>
         <p>Fale connosco para apoio administrativo ou consultoria profissional.</p>
@@ -28,7 +28,6 @@
         </div>
     {{/if}}
 
-    <!-- INFO DE CONTACTO -->
     <section class="contact-info">
         <div class="contact-card">
             <h3>Email</h3>
@@ -42,120 +41,58 @@
 
         <div class="contact-card">
             <h3>Localização</h3>
-            <p><img src="/images/location.webp" style="width: 30px; height: 30px"> Lisboa, Portugal</p>
+            <p><img src="/images/location.webp" alt="Localização" style="width: 30px; height: 30px"> Lisboa, Portugal</p>
         </div>
     </section>
 
-    <!-- FORMULÁRIO -->
     <section class="contact-form-section">
         <h2>Envie a sua mensagem</h2>
 
-        <form id="contactForm" class="contact-form" action="/" method="POST" onsubmit="enviarFormulario(event)">
-            <div class="form-group">
-            <label for="nome">Nome Completo</label>
-            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        <form id="contactForm" class="contact-form" action="/" method="POST">
+            
             <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-        </div>
 
-        <div class="form-group">
-            <label for="email">E-mail Profissional</label>
-            <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
-        </div>
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
 
-        <div class="form-group">
-            <label for="assunto">Assunto</label>
-            <select id="assunto" name="assunto">
-                <option value="consultoria">Consultoria de Carreira</option>
-                <option value="apoio com documentação">Apoio com Documentação</option>
-                <option value="parceria">Proposta de Parceria</option>
-                <option value="outro">Outro assunto</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="email">E-mail Profissional</label>
+                <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+            </div>
 
-        <div class="form-group">
-            <label for="mensagem">Como podemos ajudar?</label>
-            <textarea id="mensagem" name="mensagem" placeholder="Descreva brevemente a sua necessidade..." required></textarea>
-        </div>
+            <div class="form-group">
+                <label for="assunto">Assunto</label>
+                <select id="assunto" name="assunto">
+                    <option value="consultoria">Consultoria de Carreira</option>
+                    <option value="apoio com documentação">Apoio com Documentação</option>
+                    <option value="parceria">Proposta de Parceria</option>
+                    <option value="outro">Outro assunto</option>
+                </select>
+            </div>
 
-             <!-- honeypot (esconder via CSS). Nome 'website' é um exemplo -->
+            <div class="form-group">
+                <label for="mensagem">Como podemos ajudar?</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Descreva brevemente a sua necessidade..." required></textarea>
+            </div>
+
             <div style="display:none!important;position:absolute;left:-9999px;">
                 <label>Website</label>
                 <input type="text" name="website" id="website" autocomplete="off">
             </div>
 
-            
-  <!-- honeypot (esconder via CSS). Nome 'website' é um exemplo -->
-        <div style="display:none!important;position:absolute;left:-9999px;">
-            <label>Website</label>
-            <input type="text" name="website" id="website" autocomplete="off">
-        </div>
-            <div>
-            <label class="rgpd">
-            <input class="checkbox" type="checkbox" name="rgpd" required>
-                Aceito o tratamento dos meus dados para fins de contacto profissional.
-            </label>
+            <div class="form-group">
+                <label class="rgpd" style="display: flex; gap: 1rem;">
+                    <input style="width: 60px; heigh: 60px;" class="checkbox" type="checkbox" name="rgpd" required>
+                    <p>Aceito o tratamento dos meus dados para fins de contacto profissional.</p>
+                </label>
             </div>
-
-            <script src="https://www.google.com/recaptcha/api.js?render=6LdxxT0sAAAAAOeecPSf8p7YD3GSwvnrccNIuHO8"></script>
-
-<script>
-        function enviarFormulario(e) {
-  e.preventDefault();
-  
-  grecaptcha.ready(function() {
-    grecaptcha.execute('6LdxxT0sAAAAAOeecPSf8p7YD3GSwvnrccNIuHO8', {action: 'submit'}).then(function(token) {
-      document.getElementById('g-recaptcha-response').value = token;
-      
-      const form = document.getElementById('contactForm');
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      // Envia os dados via Fetch (AJAX)
-      fetch(form.action, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then(response => {
-        if (response.ok) {
-          // SE TUDO ESTIVER OK, REDIRECIONA MANUALMENTE
-          window.location.href = '/obrigado'; 
-        } else {
-          alert('Erro na verificação de segurança. Tente novamente.');
-        }
-      })
-      .catch(error => console.error('Erro:', error));
-    });
-  });
-}
-</script>
-
-        {{!-- <script>
-        
-         function enviarFormulario(e) {
-    e.preventDefault(); // Impede o envio imediato para verificar o Google primeiro
-    
-    grecaptcha.ready(function() {
-      grecaptcha.execute('6LdxxT0sAAAAAOeecPSf8p7YD3GSwvnrccNIuHO8', {action: 'submit'}).then(function(token) {
-        // 1. Coloca o token no campo oculto
-        document.getElementById('g-recaptcha-response').value = token;
-        
-        // 2. Envia o formulário agora que temos o token (usando o ID correto: contactForm)
-        document.getElementById('contactForm').submit();
-      });
-    });
-  }
-</script> --}}
-
-
-  
 
             <button type="submit" class="btn enviar-btn">Enviar Mensagem</button>
         </form>
-        <div id="result"></div>
     </section>
 
-    <!-- MAPA OPCIONAL -->
     <section class="mapa-section">
         <h2>Atendemos todo o país</h2>
         <img src="/images/mapa-portugal.jpg" alt="Mapa de Portugal" class="mapa-img">
@@ -163,7 +100,23 @@
 
 </main>
 
+<script>
+    // Lógica de submissão: Interceta o clique, gera o token reCAPTCHA e envia o form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Para o envio por 1 segundo para obter o token
+        
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LdxxT0sAAAAAOeecPSf8p7YD3GSwvnrccNIuHO8', {action: 'submit'})
+            .then(function(token) {
+                // Adiciona o token ao campo oculto
+                document.getElementById('g-recaptcha-response').value = token;
+                
+                // Agora envia o formulário de forma tradicional para o servidor
+                document.getElementById('contactForm').submit();
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
-
-

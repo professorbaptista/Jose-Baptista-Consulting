@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require("nodemailer");
 const path = require('path');
+const db = require('../db');
 
 router.get('/', (req, res) => {
     res.render('home', { title: 'Soluções Profissionais em Apoio Administrativo', subtitle: 'Apoio dedicado para imigrantes em Portugal.'})    
@@ -99,57 +100,107 @@ router.get('/obrigado', async (req, res) => {
     }
 
     res.render('obrigado', { title: 'Obrigado pelo seu Contacto!'})
-
-    // res.sendFile(path.join(__dirname, '../views/obrigado.html'));
 });
 
-// Rota para envio e tratamento dos dados dos clientes
+
+// --- ROTA ÚNICA DE ENVIO (POST) ---
+// Removemos o bloco que enviava JSON e consolidamos aqui
 
 router.post("/", async (req, res) => {
-  const { nome, email, mensagem, rgpd } = req.body;
+  const { nome, email, assunto, mensagem, rgpd, website } = req.body;
 
-  if (!rgpd) {
-    return res.status(400).json({ success: false, message: "RGPD não aceite" });
+  // 1. Honeypot e Validação
+  if (website || !rgpd) {
+    return res.redirect('/contactos');
   }
 
   try {
+    // 2. Gravação na Base de Dados (Para aparecer no Dashboard)
+    await db.query(
+      `INSERT INTO contactos (nome, email, assunto, mensagem, ip)
+       VALUES ($1, $2, $3, $4, $5)`,
+      [nome, email, assunto || 'Geral', mensagem, req.ip]
+    );
+
+    // 3. Envio de E-mail para josejbbaptista@gmail.com
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",         // ou o SMTP do teu hosting (melhor)
-      port: 587,
-      secure: false,
+      service: 'gmail',
       auth: {
-        user: "josejbbaptista@gmail.com",
-        pass: "ifdorhkcyksdeuqw"
+
+        // Tenta ler do Render, se não conseguir, usa o valor fixo
+          user: process.env.EMAIL_USER || "josejbbaptista@gmail.com", 
+          pass: process.env.EMAIL_PASS || "ifdorhkcyksdeuqw"
+        // user: "josejbbaptista@gmail.com",
+        // pass: process.env.EMAIL_PASS // Usa a variável de ambiente do Render
       },
 
-      // ADICIONE ISTO AQUI:
+      // ADICIONE ESTE BLOCO PARA RESOLVER O ERRO DE CERTIFICADO:
       tls: {
         rejectUnauthorized: false
       }
     });
 
     await transporter.sendMail({
-      from: `"Website - Contacto" <info@josebaptistaconsulting.pt>`,
-      to: "info@josebaptistaconsulting.pt",
-      subject: "Novo contacto do website",
-      html: `
-        <h2>Novo contacto do formulário</h2>
-        <p><strong>Nome:</strong> ${nome}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Mensagem:</strong><br>${mensagem}</p>
-      `
+      from: `"Website" <josejbbaptista@gmail.com>`,
+      to: "josejbbaptista@gmail.com",
+      subject: `Novo contacto: ${assunto}`,
+      html: `<p><strong>Nome:</strong> ${nome}</p><p><strong>Email:</strong> ${email}</p><p><strong>Mensagem:</strong> ${mensagem}</p>`
     });
 
-    res.json({ success: true, message: "Mensagem enviada com sucesso!" });
+    // 4. REDIRECIONAMENTO VISUAL (Fim do problema do JSON)
+    res.redirect('/obrigado');
 
   } catch (error) {
-    console.error("Erro ao enviar email:", error);
-    res.status(500).json({ success: false, message: "Erro ao enviar email" });
+    console.error("Erro no processamento:", error);
+    res.redirect('/contactos?erro=true');
   }
 });
 
+// Rota para envio e tratamento dos dados dos clientes
 
-// Para guardar as mensagens
+// router.post("/", async (req, res) => {
+//   const { nome, email, mensagem, rgpd } = req.body;
+
+//   if (!rgpd) {
+//     return res.status(400).json({ success: false, message: "RGPD não aceite" });
+//   }
+
+//   try {
+//     const transporter = nodemailer.createTransport({
+//       host: "smtp.gmail.com",         // ou o SMTP do teu hosting (melhor)
+//       port: 587,
+//       secure: false,
+//       auth: {
+//         user: "josejbbaptista@gmail.com",
+//         pass: "ifdorhkcyksdeuqw"
+//       },
+
+//       // ADICIONE ISTO AQUI:
+//       tls: {
+//         rejectUnauthorized: false
+//       }
+//     });
+
+//     await transporter.sendMail({
+//       from: `"Website - Contacto" <info@josebaptistaconsulting.pt>`,
+//       to: "info@josebaptistaconsulting.pt",
+//       subject: "Novo contacto do website",
+//       html: `
+//         <h2>Novo contacto do formulário</h2>
+//         <p><strong>Nome:</strong> ${nome}</p>
+//         <p><strong>Email:</strong> ${email}</p>
+//         <p><strong>Mensagem:</strong><br>${mensagem}</p>
+//       `
+//     });
+
+//     res.json({ success: true, message: "Mensagem enviada com sucesso!" });
+
+//   } catch (error) {
+//     console.error("Erro ao enviar email:", error);
+//     res.status(500).json({ success: false, message: "Erro ao enviar email" });
+//   }
+// });
+
 
 
 module.exports = router;

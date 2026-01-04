@@ -1031,6 +1031,11 @@ textarea:focus {
     gap: 1rem;
 }
 
+.checkbox{
+  width: 30px;
+  height: 30px;
+}
+
 .enviar-btn {
     background: var(--cor-primaria);
     color: white;
