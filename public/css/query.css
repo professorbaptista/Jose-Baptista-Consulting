@@ -520,8 +520,9 @@
     /* Rota Obrigado */
 .thank-you-container{
   max-width: 96%;
-  margin-top: 140px;   /* Mais espaço no mobile */
-  padding: 15px;
+  padding-block: 140px !important;
+  /* margin-top: 240px !important; */
+  padding: 30px 15px;
 }
 
 .thank-you-container h1{
