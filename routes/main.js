@@ -130,8 +130,6 @@ router.post("/", async (req, res) => {
         // Tenta ler do Render, se não conseguir, usa o valor fixo
           user: process.env.EMAIL_USER || "josejbbaptista@gmail.com", 
           pass: process.env.EMAIL_PASS || "ifdorhkcyksdeuqw"
-        // user: "josejbbaptista@gmail.com",
-        // pass: process.env.EMAIL_PASS // Usa a variável de ambiente do Render
       },
 
       // ADICIONE ESTE BLOCO PARA RESOLVER O ERRO DE CERTIFICADO:
